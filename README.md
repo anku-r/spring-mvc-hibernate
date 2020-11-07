@@ -4,6 +4,8 @@ Spring MVC Project with following usage:
 * Spring MVC
 * Spring AOP
 * Spring Security
+* Spring Rest
+* Spring Exception Handler
 * Spring Annotated Configuration
 * Java Server Pages
 * Hibernate
