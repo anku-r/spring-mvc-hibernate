@@ -22,7 +22,7 @@ public class CharacterDao extends AbstractDao<Characters>
 					.setParameter(1, name)
 					.getSingleResult();
 			
-			return  Optional.of(singleCharacter);
+			return Optional.of(singleCharacter);
 		} catch (NoResultException e) {
 			return Optional.empty();
 		}

@@ -13,6 +13,7 @@ Spring MVC Project with following usage:
 * Javax Validation
 * Logging and Custom Exception
 * OOP: Abstract and Generics
+* Java 8: Streams and Lambdas
 * Converter Design Pattern
 * HTML/CSS
 * JavaScipt/jQuery
