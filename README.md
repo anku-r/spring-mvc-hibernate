@@ -1,5 +1,5 @@
 # ut8-smh-ann
-Spring MVC Project with following usage:
+Demo Spring MVC Project with following usage:
 * Spring Core
 * Spring MVC
 * Spring AOP
