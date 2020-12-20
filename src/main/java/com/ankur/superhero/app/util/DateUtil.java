@@ -8,16 +8,18 @@ public class DateUtil {
 	
 	public static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	
+	public static final int MINUS_ONE = -1;
+	
 	public static Date convertToDate(String date) {
 		try {
 			if (date != null) {
 				Date formattedDate = dateFormat.parse(date);
 				if (!dateFormat.format(formattedDate).equals(date)) {
-					throw new ParseException("Unparseable date: \"" + date + "\"", -1);
+					throw new ParseException("Unparseable date: \"" + date + "\"", MINUS_ONE);
 				}
 				return formattedDate;
 			} else {
-				throw new ParseException("Empty date", -1);
+				throw new ParseException("Empty date", MINUS_ONE);
 			}
 		} catch (ParseException e) {
 			e.printStackTrace();

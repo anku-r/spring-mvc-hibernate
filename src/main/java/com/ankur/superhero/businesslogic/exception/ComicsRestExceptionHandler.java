@@ -5,7 +5,7 @@ import java.util.Date;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -41,8 +41,14 @@ public class ComicsRestExceptionHandler implements AppConstants {
 		return exceptionResponse(HttpStatus.BAD_REQUEST, "Invalid data in parameter");
 	}
 	
+	@ExceptionHandler(AccessDeniedException.class)
+	public  ResponseEntity<Error> handleException(AccessDeniedException ex) {
+		
+		return exceptionResponse(HttpStatus.UNAUTHORIZED, ex.getMessage());
+	}
+	
 	@ExceptionHandler(Exception.class)
-	public  ResponseEntity<Error> handleException(Exception ex, Model model) {
+	public  ResponseEntity<Error> handleException(Exception ex) {
 		
 		return exceptionResponse(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
 	}

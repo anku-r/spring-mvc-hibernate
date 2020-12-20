@@ -8,6 +8,7 @@ public class CharactersBusinessLogicTest {
 	
 	@Test
 	public void testGetCharacterById() {
+		
 		assertTrue(true);
 	}
 
