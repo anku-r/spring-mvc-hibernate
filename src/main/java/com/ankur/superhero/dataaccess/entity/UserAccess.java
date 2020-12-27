@@ -28,7 +28,7 @@ public class UserAccess {
 	@ToString.Exclude
 	private String password;
 	
-	@OneToMany(mappedBy = "userAccess", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@ToString.Exclude
+	@OneToMany(mappedBy = "userAccess", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<UserRole> userRole;
 }

@@ -17,8 +17,8 @@ public class UserRole {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@ManyToOne
 	@ToString.Exclude
+	@ManyToOne
 	private UserAccess userAccess;
 	
 	private String role;
