@@ -16,6 +16,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import com.ankur.superhero.app.util.Category;
 import com.ankur.superhero.app.util.Publisher;
 import com.ankur.superhero.businesslogic.model.CharactersModel;
+import com.ankur.superhero.businesslogic.service.CharactersBusinessLogicService;
 import com.ankur.superhero.businesslogic.service.mapper.CharactersMapper;
 import com.ankur.superhero.dataaccess.entity.Characters;
 import com.ankur.superhero.dataaccess.repository.CharactersDaoService;
@@ -24,7 +25,7 @@ import com.ankur.superhero.dataaccess.repository.CharactersDaoService;
 public class CharactersBusinessLogicTest {
 	
 	@InjectMocks
-	private CharactersBusinessLogicImpl service;
+	private CharactersBusinessLogicService service;
 	
 	@Mock
 	private CharactersDaoService repository;
@@ -33,6 +34,10 @@ public class CharactersBusinessLogicTest {
 	private CharactersMapper mapper;
 	
 	private static final String NAME = "Batman";
+	
+	public CharactersBusinessLogicTest() {
+		this.service = new CharactersBusinessLogicImpl();
+	}
 	
 	@Test
 	public void testGetCharacterByName() {
