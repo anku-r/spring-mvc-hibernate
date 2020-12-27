@@ -1,12 +1,18 @@
 package com.ankur.superhero.dataaccess.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
@@ -19,7 +25,10 @@ public class UserAccess {
 	@Column(unique = true)
 	private String user;
 	
+	@ToString.Exclude
 	private String password;
 	
-	private String role;
+	@OneToMany(mappedBy = "userAccess", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ToString.Exclude
+	private List<UserRole> userRole;
 }

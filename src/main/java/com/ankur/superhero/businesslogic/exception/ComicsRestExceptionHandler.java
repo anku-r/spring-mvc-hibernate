@@ -6,6 +6,7 @@ import java.util.Date;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -14,6 +15,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import com.ankur.superhero.app.util.AppConstants;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
 import lombok.Data;
 
@@ -35,6 +37,12 @@ public class ComicsRestExceptionHandler implements AppConstants {
 		return exceptionResponse(HttpStatus.BAD_REQUEST, validationErrorMessage);
 	}
 	
+	@ExceptionHandler(InvalidFormatException.class)
+	public ResponseEntity<Error> handleException(InvalidFormatException ex) {
+		
+		return exceptionResponse(HttpStatus.BAD_REQUEST, "Invalid data in category/publisher");
+	}
+	
 	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
 	public ResponseEntity<Error> handleException(MethodArgumentTypeMismatchException ex) {
 		
@@ -43,6 +51,12 @@ public class ComicsRestExceptionHandler implements AppConstants {
 	
 	@ExceptionHandler(AccessDeniedException.class)
 	public  ResponseEntity<Error> handleException(AccessDeniedException ex) {
+		
+		return exceptionResponse(HttpStatus.UNAUTHORIZED, ex.getMessage());
+	}
+	
+	@ExceptionHandler(AuthenticationException.class)
+	public  ResponseEntity<Error> handleException(AuthenticationException ex) {
 		
 		return exceptionResponse(HttpStatus.UNAUTHORIZED, ex.getMessage());
 	}

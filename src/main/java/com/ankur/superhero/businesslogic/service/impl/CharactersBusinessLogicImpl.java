@@ -50,7 +50,7 @@ public class CharactersBusinessLogicImpl implements CharactersBusinessLogicServi
 	}
 
 	@Override
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public void deleteCharacter(int id) {
 		
 		Characters character = repository.find(id);
@@ -89,7 +89,7 @@ public class CharactersBusinessLogicImpl implements CharactersBusinessLogicServi
 	}
 
 	@Override
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public void deleteBatch(List<Integer> charIds) {
 		
 		charIds.forEach(this::deleteCharacter);
