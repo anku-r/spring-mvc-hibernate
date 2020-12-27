@@ -51,7 +51,7 @@ public class UserDetailMapper {
 
 			@Override
 			public Collection<? extends GrantedAuthority> getAuthorities() {
-				return getUserAuthorities(userAccess.getUserRole());
+				return getUserAuthorities(userAccess.getUserRoles());
 			}
 		};
 	}

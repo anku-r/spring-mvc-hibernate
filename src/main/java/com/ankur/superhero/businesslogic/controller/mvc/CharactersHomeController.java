@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ankur.superhero.businesslogic.model.CharactersModel;
 import com.ankur.superhero.businesslogic.service.CharactersBusinessLogicService;
@@ -23,13 +22,5 @@ public class CharactersHomeController {
 		List<CharactersModel> characters = service.listAllCharacters();
 		model.addAttribute("characters", characters);
 		return "home";
-    }
-	
-	@GetMapping("/{name}")
-    public String chracter(@PathVariable("name") String name, Model model) {
-        
-		CharactersModel character = service.getCharacterByName(name);
-		model.addAttribute("character", character);
-		return "character";
     }
 }

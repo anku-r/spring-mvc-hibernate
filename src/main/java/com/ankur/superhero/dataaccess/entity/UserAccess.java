@@ -30,5 +30,5 @@ public class UserAccess {
 	
 	@ToString.Exclude
 	@OneToMany(mappedBy = "userAccess", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<UserRole> userRole;
+	private List<UserRole> userRoles;
 }
