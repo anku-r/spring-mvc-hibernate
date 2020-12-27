@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.ankur.superhero.businesslogic.mapper.UserDetailMapper;
+import com.ankur.superhero.businesslogic.service.mapper.UserDetailMapper;
 import com.ankur.superhero.dataaccess.entity.UserAccess;
 import com.ankur.superhero.dataaccess.repository.UserAccessDaoService;
 

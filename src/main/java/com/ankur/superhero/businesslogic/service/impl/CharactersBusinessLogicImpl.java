@@ -14,9 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ankur.superhero.app.util.AppConstants;
 import com.ankur.superhero.businesslogic.exception.CharacterNameAlreadyPresentException;
 import com.ankur.superhero.businesslogic.exception.RequestNotFoundException;
-import com.ankur.superhero.businesslogic.mapper.CharactersMapper;
 import com.ankur.superhero.businesslogic.model.CharactersModel;
 import com.ankur.superhero.businesslogic.service.CharactersBusinessLogicService;
+import com.ankur.superhero.businesslogic.service.mapper.CharactersMapper;
 import com.ankur.superhero.dataaccess.entity.Characters;
 import com.ankur.superhero.dataaccess.repository.CharactersDaoService;
 

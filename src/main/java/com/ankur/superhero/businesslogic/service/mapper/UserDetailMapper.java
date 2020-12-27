@@ -1,4 +1,4 @@
-package com.ankur.superhero.businesslogic.mapper;
+package com.ankur.superhero.businesslogic.service.mapper;
 
 import java.util.ArrayList;
 import java.util.Collection;
