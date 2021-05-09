@@ -52,7 +52,7 @@ public class ComicsRestExceptionHandler implements AppConstants {
 	@ExceptionHandler(AccessDeniedException.class)
 	public  ResponseEntity<Error> handleException(AccessDeniedException ex) {
 		
-		return exceptionResponse(HttpStatus.UNAUTHORIZED, ex.getMessage());
+		return exceptionResponse(HttpStatus.FORBIDDEN, ex.getMessage());
 	}
 	
 	@ExceptionHandler(AuthenticationException.class)
