@@ -19,7 +19,7 @@ import com.ankur.superhero.businesslogic.model.CharactersModel;
 import com.ankur.superhero.businesslogic.service.impl.CharactersBusinessLogicImpl;
 import com.ankur.superhero.businesslogic.service.mapper.CharactersMapper;
 import com.ankur.superhero.dataaccess.entity.Characters;
-import com.ankur.superhero.dataaccess.repository.CharactersDaoService;
+import com.ankur.superhero.dataaccess.repository.CharacterDAO;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CharactersBusinessLogicTest {
@@ -28,7 +28,7 @@ public class CharactersBusinessLogicTest {
 	private CharactersBusinessLogicService service;
 	
 	@Mock
-	private CharactersDaoService repository;
+	private CharacterDAO repository;
 	
 	@Mock
 	private CharactersMapper mapper;
