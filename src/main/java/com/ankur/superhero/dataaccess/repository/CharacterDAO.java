@@ -1,4 +1,4 @@
-package com.ankur.superhero.dataaccess.repository.impl;
+package com.ankur.superhero.dataaccess.repository;
 
 import java.util.Optional;
 
@@ -7,11 +7,9 @@ import javax.persistence.NoResultException;
 import org.springframework.stereotype.Repository;
 
 import com.ankur.superhero.dataaccess.entity.Characters;
-import com.ankur.superhero.dataaccess.repository.CharactersDaoService;
 
 @Repository
-public class CharacterDao extends AbstractDao<Characters>
-						  			implements CharactersDaoService {
+public class CharacterDAO extends AbstractDAO<Characters> {
 
 	public Optional<Characters> findByName(String name) {
 

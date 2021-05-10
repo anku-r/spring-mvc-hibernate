@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 
 import com.ankur.superhero.businesslogic.service.mapper.UserDetailMapper;
 import com.ankur.superhero.dataaccess.entity.UserAccess;
-import com.ankur.superhero.dataaccess.repository.UserAccessDaoService;
+import com.ankur.superhero.dataaccess.repository.UserAccessDAO;
 
 @Service
 public class ComicUserDetailServiceImpl implements UserDetailsService {
 
 	@Autowired
-	private UserAccessDaoService repository;
+	private UserAccessDAO repository;
 	
 	@Autowired
 	private UserDetailMapper mapper;

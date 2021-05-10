@@ -1,4 +1,4 @@
-package com.ankur.superhero.dataaccess.repository.impl;
+package com.ankur.superhero.dataaccess.repository;
 
 import java.util.Optional;
 
@@ -8,14 +8,11 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.ankur.superhero.dataaccess.entity.UserAccess;
-import com.ankur.superhero.dataaccess.repository.UserAccessDaoService;
 
 @Repository
 @Transactional
-public class UserAccessDao extends AbstractDao<UserAccess> 
-									implements UserAccessDaoService {
+public class UserAccessDAO extends AbstractDAO<UserAccess> {
 
-	@Override
 	public Optional<UserAccess> findByUsername(String userName) {
 		
 		String query = "from UserAccess where user = ?1";

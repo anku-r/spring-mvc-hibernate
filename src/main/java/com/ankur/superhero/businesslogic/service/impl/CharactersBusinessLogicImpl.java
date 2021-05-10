@@ -18,7 +18,7 @@ import com.ankur.superhero.businesslogic.model.CharactersModel;
 import com.ankur.superhero.businesslogic.service.CharactersBusinessLogicService;
 import com.ankur.superhero.businesslogic.service.mapper.CharactersMapper;
 import com.ankur.superhero.dataaccess.entity.Characters;
-import com.ankur.superhero.dataaccess.repository.CharactersDaoService;
+import com.ankur.superhero.dataaccess.repository.CharacterDAO;
 
 @Service
 @Transactional
@@ -29,7 +29,7 @@ public class CharactersBusinessLogicImpl implements CharactersBusinessLogicServi
 	private CharactersMapper mapper;
 	
 	@Autowired
-	private CharactersDaoService repository;
+	private CharacterDAO repository;
 	
 	@Override
 	public CharactersModel save(CharactersModel model) {

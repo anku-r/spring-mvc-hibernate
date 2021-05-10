@@ -1,4 +1,4 @@
-package com.ankur.superhero.dataaccess.repository.impl;
+package com.ankur.superhero.dataaccess.repository;
 
 import java.util.List;
 
@@ -6,9 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ankur.superhero.dataaccess.repository.AbstractDaoService;
-
-public abstract class AbstractDao<T> implements AbstractDaoService<T> {
+public abstract class AbstractDAO<T> {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -19,7 +17,6 @@ public abstract class AbstractDao<T> implements AbstractDaoService<T> {
 		session = sessionFactory.getCurrentSession();
 	}
 	
-	@Override
 	public T create(T entity) {
 
 		fetchSession();
@@ -27,7 +24,6 @@ public abstract class AbstractDao<T> implements AbstractDaoService<T> {
 		return entity;
 	}
 	
-	@Override
 	public T update(T entity) {
 
 		fetchSession();
@@ -35,14 +31,12 @@ public abstract class AbstractDao<T> implements AbstractDaoService<T> {
 		return entity;
 	}
 
-	@Override
 	public void delete(T entity) {
 
 		fetchSession();
 		session.delete(entity);
 	}
 
-	@Override
 	public T find(int id) {
 
 		fetchSession();
@@ -51,7 +45,6 @@ public abstract class AbstractDao<T> implements AbstractDaoService<T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public List<T> findAll() {
 
 		fetchSession();
