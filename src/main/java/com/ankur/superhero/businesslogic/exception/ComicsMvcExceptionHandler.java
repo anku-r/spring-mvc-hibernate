@@ -7,22 +7,22 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.ankur.superhero.app.util.AppConstants;
 
 @ControllerAdvice("com.ankur.superhero.businesslogic.controller.mvc")
-public class ComicsMvcExceptionHandler implements AppConstants {
+public class ComicsMvcExceptionHandler {
 
 	@ExceptionHandler(ComicWebException.class)
 	public String generateExceptionView(ComicWebException ex, Model model) {
 		
-	    model.addAttribute(ERROR_CODE_ATR, ex.getStatus().value());
-		model.addAttribute(ERROR_MESSAGE_ATR, ex.getMessage());
-		return ERROR;
+	    model.addAttribute(AppConstants.ERROR_CODE_ATR, ex.getStatus().value());
+		model.addAttribute(AppConstants.ERROR_MESSAGE_ATR, ex.getMessage());
+		return AppConstants.ERROR;
 	}
 	
 	@ExceptionHandler(Exception.class)
 	public String generateExceptionView(Exception ex, Model model) {
 		
-	    model.addAttribute(ERROR_CODE_ATR, E_500);
-		model.addAttribute(ERROR_MESSAGE_ATR, ex.getMessage());
-		return ERROR;
+	    model.addAttribute(AppConstants.ERROR_CODE_ATR, AppConstants.E_500);
+		model.addAttribute(AppConstants.ERROR_MESSAGE_ATR, ex.getMessage());
+		return AppConstants.ERROR;
 	}
 }
 

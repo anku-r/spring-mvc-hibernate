@@ -22,8 +22,7 @@ import com.ankur.superhero.dataaccess.repository.CharacterDAO;
 
 @Service
 @Transactional
-public class CharactersBusinessLogicImpl implements CharactersBusinessLogicService,
-																		AppConstants {
+public class CharactersBusinessLogicImpl implements CharactersBusinessLogicService {
 
 	@Autowired
 	private CharactersMapper mapper;
@@ -55,7 +54,7 @@ public class CharactersBusinessLogicImpl implements CharactersBusinessLogicServi
 		
 		Characters character = repository.find(id);
 		if (character == null) {
-			throw new RequestNotFoundException(CHARACTER_NOTFOUND_MSG);
+			throw new RequestNotFoundException(AppConstants.CHARACTER_NOTFOUND_MSG);
 		}
 		repository.delete(character);
 	}
@@ -83,7 +82,7 @@ public class CharactersBusinessLogicImpl implements CharactersBusinessLogicServi
 		
 		Optional<Characters> character = repository.findByName(name);
 		if (!character.isPresent()) {
-			throw new RequestNotFoundException(CHARACTER_NOTFOUND_MSG);
+			throw new RequestNotFoundException(AppConstants.CHARACTER_NOTFOUND_MSG);
 		}
 		return mapper.mapEntityToModelToDisplay(character.get());
 	}

@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
-import com.ankur.superhero.app.util.AppConstants;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
 import lombok.Data;
 
 @ControllerAdvice("com.ankur.superhero.businesslogic.controller.rest")
-public class ComicsRestExceptionHandler implements AppConstants {
+public class ComicsRestExceptionHandler {
 	
 	@ExceptionHandler(ComicWebException.class)
 	public ResponseEntity<Error> handleException(ComicWebException ex) {

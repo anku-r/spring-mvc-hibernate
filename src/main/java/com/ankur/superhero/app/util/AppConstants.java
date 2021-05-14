@@ -1,6 +1,6 @@
 package com.ankur.superhero.app.util;
 
-public interface AppConstants {
+public final class AppConstants {
 
 	public static final String REDIRECT_TO_HOME = "redirect:/";
 	

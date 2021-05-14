@@ -23,7 +23,7 @@ import com.ankur.superhero.businesslogic.service.CharactersBusinessLogicService;
 
 @RestController
 @RequestMapping("api/characters")
-public class CharactersDataApi implements AppConstants {
+public class CharactersDataApi {
 
 	@Autowired
 	private CharactersBusinessLogicService service;
@@ -52,7 +52,7 @@ public class CharactersDataApi implements AppConstants {
 		try {
 			service.deleteCharacter(id); 
 		} catch (AccessDeniedException e) {
-			throw new UnauthorizedAccessException(DELETE_DENIED_MSG);
+			throw new UnauthorizedAccessException(AppConstants.DELETE_DENIED_MSG);
 		}
 	}
 	
