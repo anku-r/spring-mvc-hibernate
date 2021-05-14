@@ -1,10 +1,11 @@
-package com.ankur.superhero.businesslogic.exception;
+package com.ankur.superhero.businesslogic.exception.handler;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.ankur.superhero.app.util.AppConstants;
+import com.ankur.superhero.businesslogic.exception.ComicWebException;
 
 @ControllerAdvice("com.ankur.superhero.businesslogic.controller.mvc")
 public class ComicsMvcExceptionHandler {

@@ -1,4 +1,4 @@
-package com.ankur.superhero.businesslogic.exception;
+package com.ankur.superhero.businesslogic.exception.handler;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+import com.ankur.superhero.businesslogic.exception.ComicWebException;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
@@ -72,7 +73,7 @@ public class ComicsRestExceptionHandler {
 		error.setStatus(status);
 		error.setMessage(message);
 		error.setDateTime(new SimpleDateFormat("dd-MM-yyyy hh:mm:ss a").format(new Date()));
-		return new ResponseEntity<Error>(error, error.getStatus());
+		return new ResponseEntity<Error>(error, status);
 	}
 }
 

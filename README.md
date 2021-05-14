@@ -1,5 +1,6 @@
-# ut8-smh-ann
-Demo Spring MVC Project with following usage:
+# spring-mvc-hibernate
+# Project to maintain Comic Characters Details
+Demo Spring Project with following usage:
 * Spring Core
 * Spring MVC
 * Spring AOP
