@@ -8,7 +8,7 @@
 						<h2>Manage Comics Characters</h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="manage/addform" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Add New Character</span></a>
+						<a href="manage/prepareaddform" class="btn btn-success"><i class="material-icons">&#xE147;</i> <span>Add New Character</span></a>
 						<button id="deleteAll" class="btn btn-danger"><i class="material-icons">&#xE15C;</i> <span>Delete</span></button>						
 					</div>
 				</div>
@@ -32,7 +32,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="character" items="${characters}">
-					<c:url var="updateLink" value="manage/updateform">
+					<c:url var="updateLink" value="manage/prepareupdateform">
 						<c:param name="id" value="${character.id}"/>
 					</c:url>
 					<tr>

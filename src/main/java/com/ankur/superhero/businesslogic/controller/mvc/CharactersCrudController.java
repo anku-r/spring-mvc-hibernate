@@ -27,7 +27,7 @@ import com.ankur.superhero.businesslogic.service.CharactersBusinessLogicService;
 
 @Controller
 @RequestMapping("/manage")
-public class CharactersCrudController implements AppConstants {
+public class CharactersCrudController {
 
 	@InitBinder
 	public void preProcess(WebDataBinder webDataBinder) {
@@ -38,12 +38,12 @@ public class CharactersCrudController implements AppConstants {
 	@Autowired
 	private CharactersBusinessLogicService service;
 
-	@GetMapping("/updateform/{id}")
+	@GetMapping(path = "/prepareupdateform", params = "id")
 	public String prepareUpdateForm(@RequestParam("id") Integer id, Model model) {
 
 		CharactersModel character = service.getCharacterById(id);
 		model.addAttribute("character", character);
-		return UPDATE_FORM;
+		return AppConstants.UPDATE_FORM;
 	}
 
 	@PostMapping("/update")
@@ -53,12 +53,12 @@ public class CharactersCrudController implements AppConstants {
 		try {
 			if (!bindingResult.hasErrors()) {
 				service.save(character);
-				return REDIRECT_TO_HOME;
+				return AppConstants.REDIRECT_TO_HOME;
 			}
 		} catch (CharacterNameAlreadyPresentException e) {
 			bindingResult.rejectValue("name", "1062", e.getMessage());
 		}
-		return UPDATE_FORM;
+		return AppConstants.UPDATE_FORM;
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -67,16 +67,16 @@ public class CharactersCrudController implements AppConstants {
 		try {
 			service.deleteCharacter(id);
 		} catch(AccessDeniedException e) {
-			throw new UnauthorizedAccessException(DELETE_DENIED_MSG);
+			throw new UnauthorizedAccessException(AppConstants.DELETE_DENIED_MSG);
 		}
-		return REDIRECT_TO_HOME;
+		return AppConstants.REDIRECT_TO_HOME;
 	}
 	
-	@GetMapping("/addform")
+	@GetMapping("/prepareaddform")
 	public String prepareAddForm(Model model) {
 
 		model.addAttribute("character", new CharactersModel());
-		return ADD_FORM;
+		return AppConstants.ADD_FORM;
 	}
 
 	@PostMapping("/add")
@@ -86,12 +86,12 @@ public class CharactersCrudController implements AppConstants {
 		try {
 			if (!bindingResult.hasErrors()) {
 				service.save(character);
-				return REDIRECT_TO_HOME;
+				return AppConstants.REDIRECT_TO_HOME;
 			}
 		} catch(CharacterNameAlreadyPresentException e) {
 			bindingResult.rejectValue("name", "1062", e.getMessage());
 		}
-		return ADD_FORM;
+		return AppConstants.ADD_FORM;
 	}
 	
 	@RequestMapping("/delete-batch")
@@ -100,8 +100,8 @@ public class CharactersCrudController implements AppConstants {
 		try {
 			service.deleteBatch(ids);
 		} catch(AccessDeniedException e) {
-			throw new UnauthorizedAccessException(DELETE_DENIED_MSG);
+			throw new UnauthorizedAccessException(AppConstants.DELETE_DENIED_MSG);
 		}
-		return REDIRECT_TO_HOME;
+		return AppConstants.REDIRECT_TO_HOME;
 	}
 }
