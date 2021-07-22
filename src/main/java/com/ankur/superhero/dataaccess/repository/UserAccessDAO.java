@@ -13,6 +13,10 @@ import com.ankur.superhero.dataaccess.entity.UserAccess;
 @Transactional
 public class UserAccessDAO extends AbstractDAO<UserAccess> {
 
+	public UserAccessDAO() {
+		super(UserAccess.class);
+	}
+
 	public Optional<UserAccess> findByUsername(String userName) {
 		
 		String query = "from UserAccess where user = ?1";
@@ -27,10 +31,5 @@ public class UserAccessDAO extends AbstractDAO<UserAccess> {
 		} catch (NoResultException e) {
 			return Optional.empty();
 		}
-	}
-	
-	@Override
-	protected Class<UserAccess> getEntityClass() {
-		return UserAccess.class;
 	}
 }

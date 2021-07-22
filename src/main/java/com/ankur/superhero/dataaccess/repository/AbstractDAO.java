@@ -8,6 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class AbstractDAO<T> {
 	
+	private final Class<T> entityClass;
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public AbstractDAO(Class entityClass) {
+		this.entityClass = entityClass;
+	}
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -40,7 +47,7 @@ public abstract class AbstractDAO<T> {
 	public T find(int id) {
 
 		fetchSession();
-		T entity = session.get(getEntityClass(), id);
+		T entity = session.get(entityClass, id);
 		return entity;
 	}
 
@@ -48,10 +55,8 @@ public abstract class AbstractDAO<T> {
 	public List<T> findAll() {
 
 		fetchSession();
-		String query = "from " + getEntityClass().getSimpleName();
+		String query = "from " + entityClass.getSimpleName();
 		List<T> entities = session.createQuery(query).getResultList();
 		return entities;
 	}
-
-	protected abstract Class<T> getEntityClass();
 }

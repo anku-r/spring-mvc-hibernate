@@ -11,6 +11,10 @@ import com.ankur.superhero.dataaccess.entity.Characters;
 @Repository
 public class CharacterDAO extends AbstractDAO<Characters> {
 
+	public CharacterDAO() {
+		super(Characters.class);
+	}
+
 	public Optional<Characters> findByName(String name) {
 
 		fetchSession();
@@ -25,9 +29,5 @@ public class CharacterDAO extends AbstractDAO<Characters> {
 			return Optional.empty();
 		}
 	}
-	
-	@Override
-	protected Class<Characters> getEntityClass() {
-		return Characters.class;
-	}
+
 }

@@ -49,13 +49,14 @@ public class ComicsAppLogger {
 	}
 	
 	@AfterThrowing(pointcut = "servicePackage() || repositoryPackage()", throwing = "thrownException")
-	public void afterException(JoinPoint joinPoint, Throwable thrownException) {
+	public void afterException(JoinPoint joinPoint, Throwable thrownException) throws Throwable {
 		
 		MethodSignature signature = (MethodSignature)joinPoint.getSignature();
 		if (thrownException instanceof RequestNotFoundException) {
 			logger.info("LOG: Exception on Method [" + signature + ", RequestNotFoundException: Character not found]");
 		} else {
 			logger.info("LOG: Exception on Method [" + signature + ", " + thrownException + "]");
+			throw thrownException;
 		}
 	}
 }

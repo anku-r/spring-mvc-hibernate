@@ -1,5 +1,6 @@
 package com.ankur.superhero.businesslogic.exception.handler;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,7 +22,7 @@ public class ComicsMvcExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public String generateExceptionView(Exception ex, Model model) {
 		
-	    model.addAttribute(AppConstants.ERROR_CODE_ATR, AppConstants.E_500);
+	    model.addAttribute(AppConstants.ERROR_CODE_ATR, HttpStatus.INTERNAL_SERVER_ERROR.value());
 		model.addAttribute(AppConstants.ERROR_MESSAGE_ATR, ex.getMessage());
 		return AppConstants.ERROR;
 	}

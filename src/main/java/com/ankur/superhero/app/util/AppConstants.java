@@ -10,8 +10,6 @@ public final class AppConstants {
 	
 	public static final String ERROR = "error";
 	
-	public static final String E_500 = "500";
-	
 	public static final String ERROR_CODE_ATR = "errorCode";
 	
 	public static final String ERROR_MESSAGE_ATR = "errorMessage";

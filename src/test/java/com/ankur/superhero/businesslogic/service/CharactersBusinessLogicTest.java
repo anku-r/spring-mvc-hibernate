@@ -12,11 +12,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ankur.superhero.app.util.Category;
 import com.ankur.superhero.app.util.Publisher;
 import com.ankur.superhero.businesslogic.model.CharactersModel;
-import com.ankur.superhero.businesslogic.service.impl.CharactersBusinessLogicImpl;
 import com.ankur.superhero.businesslogic.service.mapper.CharactersMapper;
 import com.ankur.superhero.dataaccess.entity.Characters;
 import com.ankur.superhero.dataaccess.repository.CharacterDAO;
@@ -25,6 +25,7 @@ import com.ankur.superhero.dataaccess.repository.CharacterDAO;
 public class CharactersBusinessLogicTest {
 	
 	@InjectMocks
+	@Autowired
 	private CharactersBusinessLogicService service;
 	
 	@Mock
@@ -35,9 +36,7 @@ public class CharactersBusinessLogicTest {
 	
 	private static final String NAME = "Batman";
 	
-	public CharactersBusinessLogicTest() {
-		this.service = new CharactersBusinessLogicImpl();
-	}
+
 	
 	@Test
 	public void testGetCharacterByName() {
