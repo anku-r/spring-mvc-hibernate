@@ -1,15 +1,14 @@
 package com.ankur.superhero.businesslogic.service.mapper;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import com.ankur.superhero.dataaccess.entity.UserAccess;
-import com.ankur.superhero.dataaccess.entity.UserRole;
 
 @SuppressWarnings("serial")
 @Component
@@ -51,25 +50,10 @@ public class UserDetailMapper {
 
 			@Override
 			public Collection<? extends GrantedAuthority> getAuthorities() {
-				return getUserAuthorities(userAccess.getUserRoles());
+				return userAccess.getUserRoles().stream()
+								.map(role -> new SimpleGrantedAuthority(role.getRole()))
+								.collect(Collectors.toList());
 			}
 		};
 	}
-
-	private Collection<? extends GrantedAuthority> getUserAuthorities(List<UserRole> roles) {
-	 
-		Collection<GrantedAuthority> userAuthorities = new ArrayList<>();
-		for (UserRole role : roles) {
-
-			GrantedAuthority authority = new GrantedAuthority() {
-				@Override
-				public String getAuthority() {
-					return role.getRole();
-				}
-			};
-			userAuthorities.add(authority);
-		}
-		return userAuthorities;
-	}
-
 }
