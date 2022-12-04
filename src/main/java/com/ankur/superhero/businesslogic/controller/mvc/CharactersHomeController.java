@@ -12,15 +12,15 @@ import com.ankur.superhero.businesslogic.service.CharactersBusinessLogicService;
 
 @Controller
 public class CharactersHomeController {
-	
-	@Autowired
-	private CharactersBusinessLogicService service;
 
-	@GetMapping("/")
+    @Autowired
+    private CharactersBusinessLogicService service;
+
+    @GetMapping("/")
     public String home(Model model) {
-        
-		List<CharactersModel> characters = service.listAllCharacters();
-		model.addAttribute("characters", characters);
-		return "home";
+
+	List<CharactersModel> characters = service.listAllCharacters();
+	model.addAttribute("characters", characters);
+	return "home";
     }
 }

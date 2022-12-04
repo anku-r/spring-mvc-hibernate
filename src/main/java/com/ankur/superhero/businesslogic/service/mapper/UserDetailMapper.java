@@ -14,46 +14,45 @@ import com.ankur.superhero.dataaccess.entity.UserAccess;
 @Component
 public class UserDetailMapper {
 
-	public UserDetails mapEntityToUserDetail(UserAccess userAccess) {
+    public UserDetails mapEntityToUserDetail(UserAccess userAccess) {
 
-		return new UserDetails() {
+	return new UserDetails() {
 
-			@Override
-			public boolean isEnabled() {
-				return true;
-			}
+	    @Override
+	    public boolean isEnabled() {
+		return true;
+	    }
 
-			@Override
-			public boolean isCredentialsNonExpired() {
-				return true;
-			}
+	    @Override
+	    public boolean isCredentialsNonExpired() {
+		return true;
+	    }
 
-			@Override
-			public boolean isAccountNonLocked() {
-				return true;
-			}
+	    @Override
+	    public boolean isAccountNonLocked() {
+		return true;
+	    }
 
-			@Override
-			public boolean isAccountNonExpired() {
-				return true;
-			}
+	    @Override
+	    public boolean isAccountNonExpired() {
+		return true;
+	    }
 
-			@Override
-			public String getUsername() {
-				return userAccess.getUser();
-			}
+	    @Override
+	    public String getUsername() {
+		return userAccess.getUser();
+	    }
 
-			@Override
-			public String getPassword() {
-				return userAccess.getPassword();
-			}
+	    @Override
+	    public String getPassword() {
+		return userAccess.getPassword();
+	    }
 
-			@Override
-			public Collection<? extends GrantedAuthority> getAuthorities() {
-				return userAccess.getUserRoles().stream()
-								.map(role -> new SimpleGrantedAuthority(role.getRole()))
-								.collect(Collectors.toList());
-			}
-		};
-	}
+	    @Override
+	    public Collection<? extends GrantedAuthority> getAuthorities() {
+		return userAccess.getUserRoles().stream().map(role -> new SimpleGrantedAuthority(role.getRole()))
+			.collect(Collectors.toList());
+	    }
+	};
+    }
 }

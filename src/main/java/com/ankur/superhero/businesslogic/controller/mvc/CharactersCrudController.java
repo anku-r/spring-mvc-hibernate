@@ -29,79 +29,79 @@ import com.ankur.superhero.businesslogic.service.CharactersBusinessLogicService;
 @RequestMapping("/manage")
 public class CharactersCrudController {
 
-	@InitBinder
-	public void preProcess(WebDataBinder webDataBinder) {
-		StringTrimmerEditor stringTrimEditor = new StringTrimmerEditor(true);
-		webDataBinder.registerCustomEditor(String.class, stringTrimEditor);
-	}
+    @InitBinder
+    public void preProcess(WebDataBinder webDataBinder) {
+	StringTrimmerEditor stringTrimEditor = new StringTrimmerEditor(true);
+	webDataBinder.registerCustomEditor(String.class, stringTrimEditor);
+    }
 
-	@Autowired
-	private CharactersBusinessLogicService service;
+    @Autowired
+    private CharactersBusinessLogicService service;
 
-	@GetMapping(path = "/prepareupdateform", params = "id")
-	public String prepareUpdateForm(@RequestParam("id") Integer id, Model model) {
+    @GetMapping(path = "/prepareupdateform", params = "id")
+    public String prepareUpdateForm(@RequestParam("id") Integer id, Model model) {
 
-		CharactersModel character = service.getCharacterById(id);
-		model.addAttribute("character", character);
-		return AppConstants.UPDATE_FORM;
-	}
+	CharactersModel character = service.getCharacterById(id);
+	model.addAttribute("character", character);
+	return AppConstants.UPDATE_FORM;
+    }
 
-	@PostMapping("/update")
-	public String updateCharacter(@Valid @ModelAttribute("character") CharactersModel character,
-			BindingResult bindingResult, Model model) {
+    @PostMapping("/update")
+    public String updateCharacter(@Valid @ModelAttribute("character") CharactersModel character,
+	    BindingResult bindingResult, Model model) {
 
-		try {
-			if (!bindingResult.hasErrors()) {
-				service.save(character);
-				return AppConstants.REDIRECT_TO_HOME;
-			}
-		} catch (CharacterNameAlreadyPresentException e) {
-			bindingResult.rejectValue("name", "1062", e.getMessage());
-		}
-		return AppConstants.UPDATE_FORM;
-	}
-	
-	@GetMapping("/delete/{id}")
-	public String deleteCharacter(@PathVariable("id") Integer id, Model model) {
-		
-		try {
-			service.deleteCharacter(id);
-		} catch(AccessDeniedException e) {
-			throw new UnauthorizedAccessException(AppConstants.DELETE_DENIED_MSG);
-		}
+	try {
+	    if (!bindingResult.hasErrors()) {
+		service.save(character);
 		return AppConstants.REDIRECT_TO_HOME;
+	    }
+	} catch (CharacterNameAlreadyPresentException e) {
+	    bindingResult.rejectValue("name", "1062", e.getMessage());
 	}
-	
-	@GetMapping("/prepareaddform")
-	public String prepareAddForm(Model model) {
+	return AppConstants.UPDATE_FORM;
+    }
 
-		model.addAttribute("character", new CharactersModel());
-		return AppConstants.ADD_FORM;
+    @GetMapping("/delete/{id}")
+    public String deleteCharacter(@PathVariable("id") Integer id, Model model) {
+
+	try {
+	    service.deleteCharacter(id);
+	} catch (AccessDeniedException e) {
+	    throw new UnauthorizedAccessException(AppConstants.DELETE_DENIED_MSG);
 	}
+	return AppConstants.REDIRECT_TO_HOME;
+    }
 
-	@PostMapping("/add")
-	public String addCharacter(@Valid @ModelAttribute("character") CharactersModel character,
-			BindingResult bindingResult, Model model) {
+    @GetMapping("/prepareaddform")
+    public String prepareAddForm(Model model) {
 
-		try {
-			if (!bindingResult.hasErrors()) {
-				service.save(character);
-				return AppConstants.REDIRECT_TO_HOME;
-			}
-		} catch(CharacterNameAlreadyPresentException e) {
-			bindingResult.rejectValue("name", "1062", e.getMessage());
-		}
-		return AppConstants.ADD_FORM;
-	}
-	
-	@RequestMapping("/delete-batch")
-	public String deleteBatch(@RequestParam("ids") List<Integer> ids, Model model) {
-		
-		try {
-			service.deleteBatch(ids);
-		} catch(AccessDeniedException e) {
-			throw new UnauthorizedAccessException(AppConstants.DELETE_DENIED_MSG);
-		}
+	model.addAttribute("character", new CharactersModel());
+	return AppConstants.ADD_FORM;
+    }
+
+    @PostMapping("/add")
+    public String addCharacter(@Valid @ModelAttribute("character") CharactersModel character,
+	    BindingResult bindingResult, Model model) {
+
+	try {
+	    if (!bindingResult.hasErrors()) {
+		service.save(character);
 		return AppConstants.REDIRECT_TO_HOME;
+	    }
+	} catch (CharacterNameAlreadyPresentException e) {
+	    bindingResult.rejectValue("name", "1062", e.getMessage());
 	}
+	return AppConstants.ADD_FORM;
+    }
+
+    @RequestMapping("/delete-batch")
+    public String deleteBatch(@RequestParam("ids") List<Integer> ids, Model model) {
+
+	try {
+	    service.deleteBatch(ids);
+	} catch (AccessDeniedException e) {
+	    throw new UnauthorizedAccessException(AppConstants.DELETE_DENIED_MSG);
+	}
+	return AppConstants.REDIRECT_TO_HOME;
+    }
 }

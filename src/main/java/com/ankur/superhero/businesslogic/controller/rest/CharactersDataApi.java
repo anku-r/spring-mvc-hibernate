@@ -25,46 +25,46 @@ import com.ankur.superhero.businesslogic.service.CharactersBusinessLogicService;
 @RequestMapping("api/characters")
 public class CharactersDataApi {
 
-	@Autowired
-	private CharactersBusinessLogicService service;
-	
-	@GetMapping
-	public List<CharactersModel> getAllCharacters() {
-		
-		return service.listAllCharacters();
+    @Autowired
+    private CharactersBusinessLogicService service;
+
+    @GetMapping
+    public List<CharactersModel> getAllCharacters() {
+
+	return service.listAllCharacters();
+    }
+
+    @GetMapping(params = "name")
+    public CharactersModel getCharacterByName(@RequestParam String name) {
+
+	return service.getCharacterByName(name);
+    }
+
+    @GetMapping("{id}")
+    public CharactersModel getCharacter(@PathVariable("id") Integer id) {
+
+	return service.getCharacterById(id);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteCharacter(@PathVariable("id") Integer id) {
+
+	try {
+	    service.deleteCharacter(id);
+	} catch (AccessDeniedException e) {
+	    throw new UnauthorizedAccessException(AppConstants.DELETE_DENIED_MSG);
 	}
-	
-	@GetMapping(params = "name")
-	public CharactersModel getCharacterByName(@RequestParam String name) {
-		
-		return service.getCharacterByName(name);
-	}
-	
-	@GetMapping("{id}")
-	public CharactersModel getCharacter(@PathVariable("id") Integer id) {
-		
-		return service.getCharacterById(id);
-	}
-	
-	@DeleteMapping("{id}")
-	public void deleteCharacter(@PathVariable("id") Integer id) {
-		
-		try {
-			service.deleteCharacter(id); 
-		} catch (AccessDeniedException e) {
-			throw new UnauthorizedAccessException(AppConstants.DELETE_DENIED_MSG);
-		}
-	}
-	
-	@PostMapping
-	public CharactersModel addCharacter(@Valid @RequestBody CharactersModel model) {
-		
-		return service.save(model);
-	}
-	
-	@PutMapping
-	public CharactersModel updateCharacter(@Valid @RequestBody CharactersModel model) {
-		
-		return service.save(model);
-	}
+    }
+
+    @PostMapping
+    public CharactersModel addCharacter(@Valid @RequestBody CharactersModel model) {
+
+	return service.save(model);
+    }
+
+    @PutMapping
+    public CharactersModel updateCharacter(@Valid @RequestBody CharactersModel model) {
+
+	return service.save(model);
+    }
 }

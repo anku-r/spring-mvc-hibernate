@@ -20,24 +20,24 @@ import lombok.Data;
 @Entity
 public class Characters {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-	@Column(unique = true)
-	private String name;
+    @Column(unique = true)
+    private String name;
 
-	@Column(name = "real_name")
-	private String realName;
+    @Column(name = "real_name")
+    private String realName;
 
-	@Enumerated(EnumType.STRING)
-	private Category category;
+    @Enumerated(EnumType.STRING)
+    private Category category;
 
-	@Enumerated(EnumType.STRING)
-	private Publisher publisher;
+    @Enumerated(EnumType.STRING)
+    private Publisher publisher;
 
-	private Date dob;
-	
-	@Version
-	private Integer version;
+    private Date dob;
+
+    @Version
+    private Integer version;
 }

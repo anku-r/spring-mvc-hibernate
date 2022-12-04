@@ -13,23 +13,21 @@ import com.ankur.superhero.dataaccess.entity.UserAccess;
 @Transactional
 public class UserAccessDAO extends AbstractDAO<UserAccess> {
 
-	public UserAccessDAO() {
-		super(UserAccess.class);
-	}
+    public UserAccessDAO() {
+	super(UserAccess.class);
+    }
 
-	public Optional<UserAccess> findByUsername(String userName) {
-		
-		String query = "from UserAccess where user = ?1";
-		fetchSession();	
-		try {
-			UserAccess singleUser =  session
-					.createQuery(query, UserAccess.class)
-					.setParameter(1, userName)
-					.getSingleResult();
-			
-			return Optional.of(singleUser);
-		} catch (NoResultException e) {
-			return Optional.empty();
-		}
+    public Optional<UserAccess> findByUsername(String userName) {
+
+	String query = "from UserAccess where user = ?1";
+	fetchSession();
+	try {
+	    UserAccess singleUser = session.createQuery(query, UserAccess.class).setParameter(1, userName)
+		    .getSingleResult();
+
+	    return Optional.of(singleUser);
+	} catch (NoResultException e) {
+	    return Optional.empty();
 	}
+    }
 }

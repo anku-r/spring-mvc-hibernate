@@ -11,15 +11,15 @@ import lombok.EqualsAndHashCode;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class ComicWebException extends RuntimeException {
-	
-	private HttpStatus status; 
-	
-	private String message;
-	
-	public ComicWebException(String message) {		
-		super(message);
-		this.status = HttpStatus.BAD_REQUEST;
-		this.message = message;
-	}
+
+    private HttpStatus status;
+
+    private String message;
+
+    public ComicWebException(String message) {
+	super(message);
+	this.status = HttpStatus.BAD_REQUEST;
+	this.message = message;
+    }
 
 }

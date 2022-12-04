@@ -13,13 +13,13 @@ import lombok.ToString;
 @Entity
 public class UserRole {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	@ToString.Exclude
-	@ManyToOne
-	private UserAccess userAccess;
-	
-	private String role;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ToString.Exclude
+    @ManyToOne
+    private UserAccess userAccess;
+
+    private String role;
 }

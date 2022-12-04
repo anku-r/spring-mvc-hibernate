@@ -15,20 +15,20 @@ import com.ankur.superhero.dataaccess.repository.UserAccessDAO;
 @Service
 public class ComicUserDetailServiceImpl implements UserDetailsService {
 
-	@Autowired
-	private UserAccessDAO repository;
-	
-	@Autowired
-	private UserDetailMapper mapper;
-	
-	@Override
-	public UserDetails loadUserByUsername(String username) {
-		
-		Optional<UserAccess> userAccess = repository.findByUsername(username);
-		if (!userAccess.isPresent()) {
-			throw new UsernameNotFoundException("User Not Found");
-		}
-		return mapper.mapEntityToUserDetail(userAccess.get());
+    @Autowired
+    private UserAccessDAO repository;
+
+    @Autowired
+    private UserDetailMapper mapper;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) {
+
+	Optional<UserAccess> userAccess = repository.findByUsername(username);
+	if (!userAccess.isPresent()) {
+	    throw new UsernameNotFoundException("User Not Found");
 	}
-	
+	return mapper.mapEntityToUserDetail(userAccess.get());
+    }
+
 }

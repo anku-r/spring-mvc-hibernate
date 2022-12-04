@@ -15,25 +15,25 @@ import lombok.Data;
 @Data
 public class CharactersModel {
 
-	private Integer id;
-	
-	@Pattern(regexp = "[a-zA-Z\\s]*", message = AppConstants.INVALID_NAME)
-	@NotNull(message = AppConstants.REQUIRED)
-	@Size(min = 1, message = AppConstants.REQUIRED)
-	private String name;
-	
-	@Pattern(regexp = "[a-zA-Z\\s]*", message = AppConstants.INVALID_NAME)
-	@NotEmpty(message = AppConstants.REQUIRED)
-	private String realName;
-	
-	@NotNull(message = AppConstants.REQUIRED)
-	private Category category;
-	
-	@NotNull(message = AppConstants.REQUIRED)
-	private Publisher publisher;
+    private Integer id;
 
-	@NotNull(message = AppConstants.REQUIRED)
-	@ValidDateFormat
-	private String dob;
-	
+    @Pattern(regexp = "[a-zA-Z\\s]*", message = AppConstants.INVALID_NAME)
+    @NotNull(message = AppConstants.REQUIRED)
+    @Size(min = 1, message = AppConstants.REQUIRED)
+    private String name;
+
+    @Pattern(regexp = "[a-zA-Z\\s]*", message = AppConstants.INVALID_NAME)
+    @NotEmpty(message = AppConstants.REQUIRED)
+    private String realName;
+
+    @NotNull(message = AppConstants.REQUIRED)
+    private Category category;
+
+    @NotNull(message = AppConstants.REQUIRED)
+    private Publisher publisher;
+
+    @NotNull(message = AppConstants.REQUIRED)
+    @ValidDateFormat
+    private String dob;
+
 }

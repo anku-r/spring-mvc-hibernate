@@ -13,23 +13,23 @@ import javax.validation.Payload;
 import com.ankur.superhero.app.util.DateUtil;
 
 @Constraint(validatedBy = DateFormatValidator.class)
-@Target({ElementType.METHOD, ElementType.FIELD})
+@Target({ ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidDateFormat {
-	
-	public String message() default "Incorrect Date Format. Should be 'YYYY-MM-DD'";
-	
-	public Class<?>[] groups() default {};
-	
-	public Class<? extends Payload>[] payload() default {};
-	
+
+    public String message() default "Incorrect Date Format. Should be 'YYYY-MM-DD'";
+
+    public Class<?>[] groups() default {};
+
+    public Class<? extends Payload>[] payload() default {};
+
 }
 
-class DateFormatValidator implements ConstraintValidator<ValidDateFormat, String>{
-	
-	@Override
-	public boolean isValid(String date, ConstraintValidatorContext context) {
-		return DateUtil.convertToDate(date) != null;
-	}
+class DateFormatValidator implements ConstraintValidator<ValidDateFormat, String> {
+
+    @Override
+    public boolean isValid(String date, ConstraintValidatorContext context) {
+	return DateUtil.convertToDate(date) != null;
+    }
 
 }

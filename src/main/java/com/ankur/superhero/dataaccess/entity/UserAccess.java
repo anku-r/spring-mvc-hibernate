@@ -17,17 +17,17 @@ import lombok.ToString;
 @Data
 @Entity
 public class UserAccess {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	@Column(unique = true)
-	private String user;
-	
-	@ToString.Exclude
-	private String password;
-	
-	@OneToMany(mappedBy = "userAccess", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<UserRole> userRoles;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(unique = true)
+    private String user;
+
+    @ToString.Exclude
+    private String password;
+
+    @OneToMany(mappedBy = "userAccess", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<UserRole> userRoles;
 }
